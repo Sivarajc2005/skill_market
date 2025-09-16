@@ -1,0 +1,17 @@
+package com.example.demo.Entity;
+
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
+import lombok.Getter;
+import lombok.Setter;
+
+@Embeddable
+@Getter
+@Setter
+public class Geography {
+    @Column(name = "geo_longitude")
+    String lon;
+    @Column(name = "geo_longitude")
+    String lat;
+}
