@@ -12,6 +12,6 @@ import lombok.Setter;
 public class Geography {
     @Column(name = "geo_longitude")
     String lon;
-    @Column(name = "geo_longitude")
+    @Column(name = "geo_latitude")
     String lat;
 }
