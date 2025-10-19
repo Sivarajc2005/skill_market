@@ -10,8 +10,9 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Geography {
+
     @Column(name = "geo_longitude")
-    String lon;
+    private String lon;
     @Column(name = "geo_latitude")
-    String lat;
+    private String lat;
 }
