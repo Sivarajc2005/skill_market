@@ -1,18 +1,29 @@
 package com.example.demo.Entity;
 
 
-import jakarta.persistence.*;
+import java.math.BigDecimal;
+import java.util.List;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter
-@Setter
+ @Getter
+ @Setter
 @Entity
 @Table(name = "worker_profile")
 public class WorkerProfile {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private int workerId;
 
     @OneToOne(fetch = FetchType.LAZY)  // fetch = FetchType.LAZY --> avoid fetching data unwantedly
     @JoinColumn(name = "user_id" , nullable = false)
@@ -24,24 +35,21 @@ public class WorkerProfile {
     @Column(name = "about")
     private String about;
 
-    @Column(name = "experience_years")
-    private int experienceYears;
-
-    @Column(name = "hourly_rate")
-    private int hourlyRate;
-
     @Column(name = "pincode")
     private String pincode;
-
 
     private Geography geoPoint;
 
     @Column(name= "rating_avg",precision = 3, scale = 2)
-    private Double ratingAvg;
+    private BigDecimal ratingAvg;
 
     @Column(name = "rating_count")
     private int ratingCount;
 
-    @Column(name = "is_verified")
+    @Column(name = "is_verified" , precision = 3 , scale = 2)
     private Boolean isVerified;
+
+    @OneToOne
+    @JoinColumn(name = "workerServiceId")
+    private WorkerServices workerServices;
 }
